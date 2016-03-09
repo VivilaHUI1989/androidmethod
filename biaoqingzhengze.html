@@ -1,6 +1,6 @@
-<html>
+ï»¿<html>
 <head>
-<title>ÈÃTextViewÖĞÕ¹Ê¾µÄ±íÇéÕıÈ·ÀÊ¶Á£¨ÒÑÕıÔò±í´ïÊ½Ìæ´ú·½Ê½Õ¹Ê¾µÄ±íÇé£©</title>
+<title>è®©TextViewä¸­å±•ç¤ºçš„è¡¨æƒ…æ­£ç¡®æœ—è¯»ï¼ˆå·²æ­£åˆ™è¡¨è¾¾å¼æ›¿ä»£æ–¹å¼å±•ç¤ºçš„è¡¨æƒ…ï¼‰</title>
 <style type="text/css">
 body{
 align:left;
@@ -15,18 +15,18 @@ height:100px;
 </head>
 <body>
 <img src="yanjiuhuilogo.png" class="logo"/><br/>
-<a href="index.html">Ê×Ò³</a><a href="textviewbiaoqing.html"><p>·µ»Ø</p></a>
-<h3> ÒÑÕıÔò±í´ïÊ½Ìæ´ú·½Ê½Õ¹Ê¾±íÇé</h3>
-<p>¹Ø¼üÊÇÏÂÃæ¼¸²½</p>
+<a href="index.html">é¦–é¡µ</a><a href="textviewbiaoqing.html"><p>è¿”å›</p></a>
+<h3> å·²æ­£åˆ™è¡¨è¾¾å¼æ›¿ä»£æ–¹å¼å±•ç¤ºè¡¨æƒ…</h3>
+<p>å…³é”®æ˜¯ä¸‹é¢å‡ æ­¥</p>
 <ol>
-<li><p>ÔÚres/values/ÏÂ´´½¨arrays.xml£¬²¢Ìí¼ÓÏÂÃæ¶¨Òå±íÇéµÄarray£¬/::wx¡¢/::dkµÈ¾Í´ú±í±íÇé×Ö¶Î£¬¿ÉÒÔ×Ô¼º¶¨Òå£¬Õâ¾ÍÊÇµ½Ê±ºò·¢±í±íÇéÊ±ÕæÕıµÄ¶«Î÷£¨´ú±í¶ÔÓ¦µÄ±íÇéÍ¼Æ¬£©¡£</p>
+<li><p>åœ¨res/values/ä¸‹åˆ›å»ºarrays.xmlï¼Œå¹¶æ·»åŠ ä¸‹é¢å®šä¹‰è¡¨æƒ…çš„arrayï¼Œ/::wxã€/::dkç­‰å°±ä»£è¡¨è¡¨æƒ…å­—æ®µï¼Œå¯ä»¥è‡ªå·±å®šä¹‰ï¼Œè¿™å°±æ˜¯åˆ°æ—¶å€™å‘è¡¨è¡¨æƒ…æ—¶çœŸæ­£çš„ä¸œè¥¿ï¼ˆä»£è¡¨å¯¹åº”çš„è¡¨æƒ…å›¾ç‰‡ï¼‰ã€‚</p>
 <textarea rows="14" cols="200">
 <?xml version="1.0" encoding="utf-8"?>
     <resources 
     xmlns:android="http://schemas.android.com/apk/res/android" 
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">    
    <string-array name="smiley_array">    
-        <!--ÓĞ¼¸ÖÖ±íÇé¾ÍĞ´¼¸¸öitem......-->
+        <!--æœ‰å‡ ç§è¡¨æƒ…å°±å†™å‡ ä¸ªitem......-->
         <item>/::wx</item>
         <item>/::dk</item>
         <item>/::zd</item>
@@ -36,8 +36,8 @@ height:100px;
 </resources>   
 </textarea>
 </li>
-<li><p>½«×Ô¼ºÒªÓÃµÄ±íÇéÍ¼Æ¬·ÅÈëres/drawable/ÏÂ</p></li>
-<li><p>½«ÏÂÃæ¹¤¾ßÀà¿½Èë×Ô¼ºµÄ¹¤³ÌÀï¡££¨¸ù¾İ×Ô¼º×ÊÔ´µÄÃû³Æ»¹ĞèÒª½øĞĞÉÔÎ¢ĞŞ¸Ä£©¡£</p>
+<li><p>å°†è‡ªå·±è¦ç”¨çš„è¡¨æƒ…å›¾ç‰‡æ”¾å…¥res/drawable/ä¸‹</p></li>
+<li><p>å°†ä¸‹é¢å·¥å…·ç±»æ‹·å…¥è‡ªå·±çš„å·¥ç¨‹é‡Œã€‚ï¼ˆæ ¹æ®è‡ªå·±èµ„æºçš„åç§°è¿˜éœ€è¦è¿›è¡Œç¨å¾®ä¿®æ”¹ï¼‰ã€‚</p>
 <textarea rows="100" cols="150">
 import android.content.Context;    
 import android.graphics.drawable.Drawable;    
@@ -72,18 +72,18 @@ public class SmileyParser {
     }    
 
     static class Smileys {    
-        // ±íÇéÍ¼Æ¬¼¯ºÏ    
+        // è¡¨æƒ…å›¾ç‰‡é›†åˆ    
         private static final int[] sIconIds = { R.drawable.image0,    
                 R.drawable.image1, R.drawable.image2,    
                 R.drawable.image3, R.drawable.image4};    
-        // ½«Í¼Æ¬Ó³ÉäÎª ÎÄ×Ö    
+        // å°†å›¾ç‰‡æ˜ å°„ä¸º æ–‡å­—    
         public static int dk = 0;    
         public static int dx = 1;    
         public static int hx = 2;    
         public static int hy = 3;    
         public static int jy = 4;    
 
-        // µÃµ½Í¼Æ¬±íÇé ¸ù¾İid    
+        // å¾—åˆ°å›¾ç‰‡è¡¨æƒ… æ ¹æ®id    
         public static int getSmileyResource(int which) {    
             return sIconIds[which];    
         }    
@@ -110,7 +110,7 @@ public class SmileyParser {
         return smileyToRes;    
     }    
 
-    // ¹¹½¨ÕıÔò±í´ïÊ½    
+    // æ„å»ºæ­£åˆ™è¡¨è¾¾å¼    
     private Pattern buildPattern() {    
         StringBuilder patternString = new StringBuilder(mSmileyTexts.length * 3);    
         patternString.append('(');    
@@ -123,14 +123,14 @@ public class SmileyParser {
         return Pattern.compile(patternString.toString());    
     }    
 
-    // ¸ù¾İÎÄ±¾Ìæ»»³ÉÍ¼Æ¬    
+    // æ ¹æ®æ–‡æœ¬æ›¿æ¢æˆå›¾ç‰‡    
     public CharSequence strToSmiley(CharSequence text) {    
         SpannableStringBuilder builder = new SpannableStringBuilder(text);    
         Matcher matcher = mPattern.matcher(text);    
         while (matcher.find()) {    
             int resId = mSmileyToRes.get(matcher.group());    
             Drawable drawable = mContext.getResources().getDrawable(resId);    
-            drawable.setBounds(0, 0, 25, 25);//ÕâÀïÉèÖÃÍ¼Æ¬µÄ´óĞ¡    
+            drawable.setBounds(0, 0, 25, 25);//è¿™é‡Œè®¾ç½®å›¾ç‰‡çš„å¤§å°    
             ImageSpan imageSpan = new ImageSpan(drawable, ImageSpan.ALIGN_BOTTOM);    
             builder.setSpan(imageSpan, matcher.start(),    
                     matcher.end(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);    
@@ -139,16 +139,16 @@ public class SmileyParser {
     }    
 }   
 </textarea>
-<li><p>×îºó¾ÍÊÇÔõÃ´Ê¹ÓÃÁË</p>
-<p>£¨1£©³õÊ¼»¯ </p>
+<li><p>æœ€åå°±æ˜¯æ€ä¹ˆä½¿ç”¨äº†</p>
+<p>ï¼ˆ1ï¼‰åˆå§‹åŒ– </p>
 <textarea rows="4" cols="150">
 SmileyParser.init(this);    
 SmileyParse SmileyParse;
-smileyParser = SmileyParser.getInstance();//½øĞĞ³õÊ¼»¯
+smileyParser = SmileyParser.getInstance();//è¿›è¡Œåˆå§‹åŒ–
 </textarea>
-<p>£¨2£©×îºóµÄÊ¹ÓÃ</p>
+<p>ï¼ˆ2ï¼‰æœ€åçš„ä½¿ç”¨</p>
 <textarea rows="7" cols="150">
-//faceStr´ú±í±íÇé×Ö¶Î£¬ÀıÈç[XX]    
+//faceSträ»£è¡¨è¡¨æƒ…å­—æ®µï¼Œä¾‹å¦‚[XX]    
 TextView myTextView;
 String faceStr = "/::wx";
 String newContent = myTextView.getText().toString() + faceStr;    
@@ -157,7 +157,7 @@ myTextView.setText(replace);
 </textarea>
 </li>
 <li>
-<p>ÕâÑù¾Í¿ÉÒÔ¿´µ½×Ô¼ºµÄmyEditTextÒÑ¾­²åÈëÁË¶ÔÓ¦µÄ±íÇéÍ¼Æ¬ </p>
+<p>è¿™æ ·å°±å¯ä»¥çœ‹åˆ°è‡ªå·±çš„myEditTextå·²ç»æ’å…¥äº†å¯¹åº”çš„è¡¨æƒ…å›¾ç‰‡ </p>
 </li>
 </ol>
 </body>

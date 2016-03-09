@@ -1,6 +1,6 @@
-<html>
+﻿<html>
 <head>
-<title>��TextView��չʾ�ı�����ȷ�ʶ������������ʽ�����ʽչʾ�ı��飩</title>
+<title>让TextView中展示的表情正确朗读（已正则表达式替代方式展示的表情）</title>
 <style type="text/css">
 body{
 align:left;
@@ -19,24 +19,24 @@ height:700px;
 </head>
 <body>
 <img src="yanjiuhuilogo.png" class="logo"/><br/>
-<a href="index.html">��ҳ</a><a href="index.html"><p>����</p></a>
-<h3>��TextView��չʾ�ı�����ȷ�ʶ������������ʽ�����ʽչʾ�ı��飩</h3>
+<a href="index.html">首页</a><a href="index.html"><p>返回</p></a>
+<h3>让TextView中展示的表情正确朗读（已正则表达式替代方式展示的表情）</h3>
 <hr/>
 <ol>
-<li><h4>������������</h4>
+<li><h4>【问题描述】</h4>
 <hr/>
-<p>����������չʾ��ʱ���ʶ�Ϊһ���û��޷�������ַ������磺��/����wx�����û��޷�ͨ���⴮�ַ���֪��չʾ���������ʲô���顣</p>
+<p>　　当表情展示的时候朗读为一串用户无法理解的字符串，如：“/：：wx”。用户无法通过这串字符串知道展示或输入的是什么表情。</p>
 </li>
-<li><h4>��������롿</h4>
+<li><h4>【问题代码】</h4>
 <hr/>
-<p>ע�����������ʽ�����ʽչʾ����ķ������˽�������ġ�������</p>
+<p>注：已正则表达式替代方式展示表情的方法见此解决方案的“附“。</p>
 <textarea rows="14" cols="150">
 <?xml version="1.0" encoding="utf-8"?>
     <resources 
     xmlns:android="http://schemas.android.com/apk/res/android" 
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">    
    <string-array name="smiley_array">    
-        <!--�м��ֱ����д����item......-->
+        <!--有几种表情就写几个item......-->
         <item>/::wx</item>
         <item>/::dk</item>
         <item>/::zd</item>
@@ -46,11 +46,11 @@ height:700px;
 </resources> 
 </textarea>
 </li>
-<li><h4>������������������</h4>
+<li><h4>【问题解决方案描述】</h4>
 <hr/>
-<p>������Ҫ���������ʽ���Ϊ������ַ�������Ϊ��������ƣ��硰΢Ц��������ַ�������Ϊ����/::΢Ц������������֮��������ʶ�Ϊ��΢Ц����ע��һ������·����Ǳ��������Բ��ʶ������ģ������ʶ������ǣ���΢Ц�������û���֪���˱����ǡ�΢Ц�����顣</p>
+<p>　　把要用正则表达式替代为表情的字符串定义为表情的名称，如“微笑”表情的字符串定义为：“/::微笑“，这样定义之后读屏会朗读为”微笑“（注：一般情况下符号是被读屏忽略不朗读出来的，所以朗读内容是：“微笑“），用户就知道此表情是”微笑“表情。</p>
 </li>
-<li><h4>�����������</h4>
+<li><h4>【解决方案】</h4>
 <hr/>
 <textarea rows="14" cols="150">
 <?xml version="1.0" encoding="utf-8"?>
@@ -58,33 +58,33 @@ height:700px;
     xmlns:android="http://schemas.android.com/apk/res/android" 
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">    
    <string-array name="smiley_array">    
-        <!--�м��ֱ����д����item......-->
-        <item>/::΢Ц</item>
-        <item>/::���</item>
-        <item>/::ը��</item>
-<item>/::����</item>
-<item>/::��ϲ</item>    
+        <!--有几种表情就写几个item......-->
+        <item>/::微笑</item>
+        <item>/::大哭</item>
+        <item>/::炸弹</item>
+<item>/::可怜</item>
+<item>/::恭喜</item>    
     </string-array>    
 </resources>    
 </textarea>
 </li>
-<li><h4>��ǰ��Ч��ͼ�Աȡ�</h4>
+<li><h4>【前后效果图对比】</h4>
 <hr/>
 <table>
 <tr>
 <td><img src="textview1.png" class="litu"/></td><td><img src="textview2.png" class="litu"/></td>
 </tr>
 <tr>
-<td>�Ż�ǰ����Ļ�Ķ����ʶ�Ϊ��wx��</td><td>�Ż�����Ļ�Ķ����ʶ�Ϊ��΢Ц��</td></tr>
+<td>优化前，屏幕阅读器朗读为“wx”</td><td>优化后，屏幕阅读器朗读为“微笑”</td></tr>
 </table>
 </li>
-<li><h4>����չ��</h4>
+<li><h4>【扩展】</h4>
 <hr/>
-<p>��EditText���༭��չʾ�����ʱ����ֽ������Ҳ���á�</p>
+<p>在EditText（编辑框）展示表情的时候此种解决方案也试用。</p>
 </li>
-<li><h4>�����ࡿ</h4>
+<li><h4>【更多】</h4>
 <hr/>
-<a href="biaoqingzhengze.html"><p>���������ʽ�����ʽչʾ����</p></a>
+<a href="biaoqingzhengze.html"><p>已正则表达式替代方式展示表情</p></a>
 </li>
 </ol>
 </body>

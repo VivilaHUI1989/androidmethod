@@ -1,6 +1,6 @@
-<html>
+﻿<html>
 <head>
-<title>��ָ˫����ť��ʱ����Ӧ�¼����һ�û����Ӧ</title>
+<title>单指双击按钮的时候响应事件错乱或没有响应</title>
 <style type="text/css">
 body{
 align:left;
@@ -19,15 +19,15 @@ height:700px;
 </head>
 <body>
 <img src="yanjiuhuilogo.png" class="logo"/><br/>
-<a href="index.html">��ҳ</a><a href="index.html"><p>����</p></a>
-<h3>��ָ˫����ť��ʱ����Ӧ�¼����һ�û����Ӧ</h3>
+<a href="index.html">首页</a><a href="index.html"><p>返回</p></a>
+<h3>单指双击按钮的时候响应事件错乱或没有响应</h3>
 <hr/>
 <ol>
-<li><h4>������������</h4>
+<li><h4>【问题描述】</h4>
 <hr/>
-<p>��ť��������onClick�¼���������ť��һ���ʱ��ָ˫��һ����ť����ť�ĵ����¼���Ӧ���ң���ָ˫��a��ť����Ӧ����b��ť���¼��������߰�ťû����Ӧ����</p>
+<p>按钮都监听了onClick事件，几个按钮在一起的时候单指双击一个按钮，按钮的单机事件响应错乱（单指双击a按钮，响应的是b按钮的事件），或者按钮没有响应。　</p>
 </li>
-<li><h4>��������롿</h4>
+<li><h4>【问题代码】</h4>
 <hr/>
 <p></p>
 <textarea rows="32" cols="150">
@@ -38,21 +38,21 @@ height:700px;
 	android:layout_width="fill_parent" 
 	android:layout_height="fill_parent">
 	<TextView 
-		android:text="��ϲ�����ֻ�Ʒ���ǣ�"
+		android:text="你喜欢的手机品牌是？"
 		android:id="@+id/TextView01"
 		android:layout_width="wrap_content" 
 		android:layout_height="wrap_content"></TextView>
 	<Button 
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content" 
-		android:text="����"
+		android:text="三星"
 		android:background="@drawable/btn_background"
 		android:onClick="onClick" 
 		android:id="@+id/Button02"></Button>
 	<Button 
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content" 
-		android:text="Ħ��"
+		android:text="摩托"
 		android:onClick="onClick" 
 		android:id="@+id/Button03"></Button>
 	<Button 
@@ -64,13 +64,13 @@ height:700px;
 </LinearLayout>
 </textarea>
 </li>
-<li><h4>������������������</h4>
+<li><h4>【问题解决方案描述】</h4>
 <hr/>
-<p>�ɴ����������С���ٷ��Ƽ����û���ѡ����߲���������С���ȺͿ���Ϊ48dp��С���������԰Ѵ˲����ļ��İ�ť�ĸ߶ȸĸ�һЩ������������Ӧ��ť�ĵ�ָ˫���¼�������</p>
+<p>可触控制区域大小：官方推荐，用户可选择或者操作区域最小长度和宽度为48dp大小。经过测试把此布局文件的按钮的高度改高一些就能正常的响应按钮的单指双击事件。　　</p>
 </li>
-<li><h4>�����������</h4>
+<li><h4>【解决方案】</h4>
 <hr/>
-<p>����Ĵ���Ѱ�ť�ĸ߶��޸��ˣ��߶��޸�֮��ť������������Ӧ��ָ˫���¼�</p><textarea rows="32" cols="150">
+<p>下面的代码把按钮的高度修改了，高度修改之后按钮就能正常的响应单指双击事件</p><textarea rows="32" cols="150">
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:orientation="vertical" 
@@ -78,47 +78,47 @@ height:700px;
 	android:layout_width="fill_parent" 
 	android:layout_height="fill_parent">
 	<TextView 
-		android:text="��ϲ�����ֻ�Ʒ���ǣ�"
+		android:text="你喜欢的手机品牌是？"
 		android:id="@+id/TextView01"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"></TextView>
 	<Button 
 		android:layout_width="wrap_content"
-		android:layout_height="80dp�� 
-		android:text="����"
+		android:layout_height="80dp” 
+		android:text="三星"
 		android:background="@drawable/btn_background"
 		android:onClick="onClick" 
 		android:id="@+id/Button02"></Button>
 	<Button 
 		android:layout_width="wrap_content"
-		android:layout_height="80dp��
-		android:text="Ħ��"
+		android:layout_height="80dp”
+		android:text="摩托"
 		android:onClick="onClick" 
 		android:id="@+id/Button03"></Button>
 	<Button 
 		android:layout_width="wrap_content"
-		android:layout_height="80dp�� 
+		android:layout_height="80dp” 
 		android:text="HTC"
 		android:onClick="onClick" 
 		android:id="@+id/Button01"></Button>
 </LinearLayout>
 </textarea>
 </li>
-<li><h4>��ǰ��Ч��ͼ�Աȡ�</h4>
+<li><h4>【前后效果图对比】</h4>
 <hr/>
 <table>
 <tr>
-<td><img src="5-1.png" class="litu" alt="�Ż�ǰ����ť��Ӧ��ͬ�ĵ���¼�"/></td><td><img src="5-2.png" class="litu"/></td>
+<td><img src="5-1.png" class="litu" alt="优化前，按钮响应相同的点击事件"/></td><td><img src="5-2.png" class="litu"/></td>
 </tr>
 <tr>
-<td>�Ż�ǰ����ť��Ӧ��ͬ�ĵ���¼�</td><td>�Ż��󣬰�ť��Ӧ��ͬ�ĵ���¼�</td></tr>
+<td>优化前，按钮响应相同的点击事件</td><td>优化后，按钮响应不同的点击事件</td></tr>
 </table>
 </li>
-<li><h4>����չ��</h4>
+<li><h4>【扩展】</h4>
 <hr/>
-<p>�˽��������һ����Ч��Ҳ����������ԭ����������⣬��ʱ��û�з��֡�</p>
+<p>此解决方法不一定生效。也许还有其他原因引起此问题，暂时还没有发现。</p>
 </li>
-<li><h4>�����ࡿ</h4>
+<li><h4>【更多】</h4>
 <hr/>
 
 </li>
