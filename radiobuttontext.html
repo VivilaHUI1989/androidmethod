@@ -1,0 +1,112 @@
+﻿<html>
+<head>
+<title>用Android：text属性在单选按钮上显示目的说明文本</title>
+<style type="text/css">
+body{
+align:left;
+margin-left:120px;
+position: relative;
+}
+.logo{
+width:200px;
+height:100px;
+}
+.litu{
+width:400px;
+height:700px;
+}
+</style>
+</head>
+<body>
+<img src="yanjiuhuilogo.png" class="logo"/><br/>
+<a href="index.html">首页</a><a href="index.html"><p>返回</p></a>
+<h3>用Android：text属性在单选按钮上显示目的说明文本</h3>
+<hr/>
+<ol>
+<li><h4>【问题描述】</h4>
+<hr/>
+<p>单选按钮（RadioButton）没有添加目的说明文本，只能朗读出单选按钮的选中状态和控件类型，用户无法从这些信息中了解到对此单选按钮进行操作会达到什么目的。</p>
+</li>
+<li><h4>【问题代码】</h4>
+<hr/>
+<p></p>
+<textarea rows="25" cols="150">
+<RadioGroup
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content">
+<TextView
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:text="女"/>
+
+<RadioButton
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:id="@+id/radio_female"/>
+
+<TextView
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:text="男"/>
+
+<RadioButton
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:id="@+id/radio_male"/>
+</RadioGroup>
+</textarea>
+</li>
+<li><h4>【问题解决方案描述】</h4>
+<hr/>
+<p>直接给单选按钮（RadioButton）添加Android:text属性，此属性的内容会显示在控件之上且能正确朗读出。　</p>
+</li>
+<li><h4>【解决方案】</h4>
+<hr/>
+<textarea rows="20" cols="150">
+<RadioGroup
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content">
+
+	<!—因Android:text属性的内容会显示出，所以可以不在用TextView控件-->
+<RadioButton
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:id="@+id/radio_female"
+	<!--下面是text属性-->
+	Android:text=”女”/>
+
+<RadioButton
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:id="@+id/radio_male"
+	<!--下面是text属性-->
+	android:text=”男”/>
+</RadioGroup>
+</textarea>
+</li>
+<li><h4>【前后效果图对比】</h4>
+<hr/>
+<table>
+<tr>
+<td><img src="9-1.png" class="litu" alt="优化前，屏幕阅读器朗读“未选中，单选按钮”"/></td><td><img src="9-2.png" class="litu" alt="优化前，屏幕阅读器朗读“未选中，男单选按钮”"/></td>
+</tr>
+<tr>
+<td>优化前，屏幕阅读器朗读“未选中，单选按钮”</td><td>优化前，屏幕阅读器朗读“未选中，男单选按钮”</td></tr>
+<tr>
+<td><img src="9-3.png" class="litu" alt=""/></td><td><img src="9-4.png" class="litu" alt=""/></td>
+</tr>
+<tr>
+<td>优化前，屏幕阅读器朗读“未选中，复选框”</td><td>优化前，屏幕阅读器朗读“未选中，梨子复选框”</td></tr>
+</table>
+</li>
+<li><h4>【扩展】</h4>
+<hr/>
+<p>本解决方案对复选框（CheckBox）一样有效。</p>
+</li>
+<li><h4>【更多】</h4>
+<hr/>
+
+</li>
+</ol>
+</body>
+</html>
