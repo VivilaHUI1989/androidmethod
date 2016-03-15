@@ -1,0 +1,93 @@
+﻿<html>
+<head>
+<title>为采用默认textOn、textOff文本的开关控件（ToggleButton）添加描述文本</title>
+<link href="style.css" type="text/css" rel="Stylesheet"/>
+<style type="text/css">
+</style>
+</head>
+<body>
+<img src="yanjiuhuilogo.png" class="logo"/><br/>
+<a href="index.html">首页</a><a href="index.html"><p>返回</p></a>
+<h3>为采用默认textOn、textOff文本的开关控件（ToggleButton）添加描述文本</h3>
+<hr/>
+<ol>
+<li><h4>【问题描述】</h4>
+<hr/>
+<p>开关控件（ToggleButton）有状态提示文本显示，如果使用开关控件没有另外设置状态提示文本（textOn、textOff）默认显示的是“开”或“关”。当用户浏览到使用默认状态提示文本的开关控件的时候朗读为“开 开关 已选中”（或“关 开关 未选中”），用户很难通过这个提示知道此开关控件是控制什么功能的。　</p>
+</li>
+<li><h4>【问题代码】</h4>
+<hr/>
+<p></p>
+<textarea rows="13" cols="150">
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+<!—下面的开关控件使用的是默认的状态提示文本
+	<ToggleButton
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/toggle"
+	/>
+</LinearLayout>
+</textarea>
+</li>
+<li><h4>【问题解决方案描述】</h4>
+<hr/>
+<p>在使用开关控件的默认状态文本提示的时候给开关控件添加Android：contentDescription属性，此属性不会被显示出来，此属性可以帮助用户了解此开关控件的功能、目的。添加了此属性也不会导致不朗读开关控件的状态提示文本不朗读。<br/>
+提示：使用开关控件的时候推荐自己添加状态提示文本，自己添加状态提示文本无障碍体验比添加Android:contentDescription属性好。添加状态提示文本的方式如android:textOff=”关闭消息提醒”、android:textOn=”开启消息提醒”。
+</p>
+</li>
+<li><h4>【解决方案】</h4>
+<hr/>
+<textarea rows="15" cols="150">
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+<!-下面的开关控件使用的是默认的状态提示文本
+	<ToggleButton
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/toggle"
+<!--下面是给开关控件添加Android:contentDescription属性-->
+		android:contentDescription="消息提醒"
+	/>
+</LinearLayout>
+</textarea>
+</li>
+<li><h4>【前后效果图对比】</h4>
+<hr/>
+<table>
+<tr>
+<td colspan="2"><img src="10-1.png" class="litu" alt="优化前，屏幕阅读器朗读“关闭，开关，未选中”"/></td></tr>
+<tr><td colspan="2">优化前，屏幕阅读器朗读“关闭，开关，未选中”</td></tr>
+<tr>
+<td colspan="2">使用android:contentDescription：</td>
+</tr>
+<tr>
+<td ><img src="10-2.png" class="litu" alt="双击前，屏幕阅读器朗读：“消息提醒 关闭 开关 未选中”"/></td><td><img src="10-3.png" class="litu" alt="双击后，屏幕阅读器朗读：“消息提醒 开启 开关 已选中”"/></td>
+</tr>
+<tr>
+<td>双击前，屏幕阅读器朗读：“消息提醒 关闭 开关 未选中”</td><td>双击后，屏幕阅读器朗读：“消息提醒 开启 开关 已选中”</td></tr>
+<tr>
+<td><img src="10-4.png" class="litu" alt="双击前，屏幕阅读器朗读：“开启消息提醒 开关 未选中”"/></td><td><img src="10-5.png" class="litu" alt="双击后，屏幕阅读器朗读：“关闭消息提醒 开关 已选中”"/></td>
+</tr>
+<tr>
+<td>双击前，屏幕阅读器朗读：“开启消息提醒 开关 未选中”</td><td>双击后，屏幕阅读器朗读：“关闭消息提醒 开关 已选中”</td></tr>
+</table>
+
+</li>
+<li><h4>【扩展】</h4>
+<hr/>
+<p></p>
+</li>
+<li><h4>【更多】</h4>
+<hr/>
+
+</li>
+</ol>
+</body>
+</html>

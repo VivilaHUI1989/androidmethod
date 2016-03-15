@@ -1,0 +1,79 @@
+﻿<html>
+<head>
+<title>图片中有文本且文本能指示功能、目的的,替代文本尽量使用图片上的文本</title>
+<link href="style.css" type="text/css" rel="Stylesheet"/>
+<style type="text/css">
+</style>
+</head>
+<body>
+<img src="yanjiuhuilogo.png" class="logo"/><br/>
+<a href="index.html">首页</a><a href="index.html"><p>返回</p></a>
+<h3>图片中有文本且文本能指示功能、目的的,替代文本尽量使用图片上的文本</h3>
+<hr/>
+<ol>
+<li><h4>【问题描述】</h4>
+<hr/>
+<p>图片中有文本或文本图片且图片中的文本能指示控件的功能、目的等，提供不是图片上的文本的替代文本，会导致屏幕阅读器用户获取到的信息与普通用户一致。还有可能导致屏幕阅读器用户与普通用户交流出现困难，例如一个图形按钮上面有“首页”两个字，替代文本是：“返回”，实际的功能是打开首页，如果一个屏幕阅读器用户给普通用户说：那个“返回“按钮怎么点击之后没有返回？普通用户会非常疑惑，他会说：上面没有“返回”按钮啊，只有一个“首页”按钮。</p>
+</li>
+<li><h4>【问题代码】</h4>
+<hr/>
+<p></p>
+<textarea rows="14" cols="150">
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+<!—这个图形按钮的图片上有“首页”两个字，替代文本是“返回”—>
+<ImageButton
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:id="@+id/imagebutton"
+	android:src="@drawable/home"
+	android:contentDescription="返回"/>
+</LinearLayout>
+</textarea>
+</li>
+<li><h4>【问题解决方案描述】</h4>
+<hr/>
+<p>当图片中有文本或文本图片且文本能指示控件的功能、目的的时候应当把替代文本设置为与显示的图片中的文本一致。这样可以保证屏幕阅读器用户与普通用户获取的信息一致，也就是“所见即所得”。</p>
+</li>
+<li><h4>【解决方案】</h4>
+<hr/>
+<textarea rows="14" cols="150">
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+<!—下面的替代文本与图片中显示的文本一致，替代文本是“首页”-->
+<ImageButton
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:id="@+id/imagebutton"
+	android:src="@drawable/home"
+	android:contentDescription="首页"/>
+</LinearLayout>
+</textarea>
+</li>
+<li><h4>【前后效果图对比】</h4>
+<hr/>
+<table>
+<tr>
+<td><img src="12-1.jpg" class="litu" alt="优化前，屏幕阅读器朗读“返回按钮”"/></td><td><img src="12-2.jpg" class="litu" alt="优化后，屏幕阅读器朗读“首页按钮”"/></td>
+</tr>
+<tr>
+<td>优化前，屏幕阅读器朗读“返回按钮”</td><td>优化后，屏幕阅读器朗读“首页按钮”</td></tr>
+</table>
+</li>
+<li><h4>【扩展】</h4>
+<hr/>
+<p></p>
+</li>
+<li><h4>【更多】</h4>
+<hr/>
+
+</li>
+</ol>
+</body>
+</html>
