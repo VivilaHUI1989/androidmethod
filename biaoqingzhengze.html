@@ -30,7 +30,7 @@
 </li>
 <li><p>将自己要用的表情图片放入res/drawable/下</p></li>
 <li><p>将下面工具类拷入自己的工程里。（根据自己资源的名称还需要进行稍微修改）。</p>
-<textarea rows="100" cols="150">
+<textarea rows="100" cols="120">
 import android.content.Context;    
 import android.graphics.drawable.Drawable;    
 import android.text.Spannable;    
@@ -133,13 +133,13 @@ public class SmileyParser {
 </textarea>
 <li><p>最后就是怎么使用了</p>
 <p>（1）初始化 </p>
-<textarea rows="4" cols="150">
+<textarea rows="4" cols="120">
 SmileyParser.init(this);    
 SmileyParse SmileyParse;
 smileyParser = SmileyParser.getInstance();//进行初始化
 </textarea>
 <p>（2）最后的使用</p>
-<textarea rows="7" cols="150">
+<textarea rows="7" cols="120">
 //faceStr代表表情字段，例如[XX]    
 TextView myTextView;
 String faceStr = "/::wx";

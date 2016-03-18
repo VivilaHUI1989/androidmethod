@@ -1,0 +1,257 @@
+﻿<html>
+<head>
+<title>在Adapter的getView()方法中动态给ListView中的图片设置描述文本</title>
+<link href="style.css" type="text/css" rel="Stylesheet"/>
+<style type="text/css">
+</style>
+</head>
+<body>
+<img src="yanjiuhuilogo.png" class="logo"/><br/>
+<a href="index.html">首页</a><a href="index.html"><p>返回</p></a>
+<h3>在Adapter的getView()方法中动态给ListView中的图片设置描述文本</h3>
+<hr/>
+<ol>
+<li><h4>【问题描述】</h4>
+<hr/>
+<p>一个ListView采用自定义的item布局且布局中有图片等需要添加Android:contentDescription属性的控件，如果在xml中添加Android:contentDescription属性，那么ListView的每一个item的图形或添加了Android:contentDescription属性的控件朗读的描述都一样，用户无法很好的区分当前处于哪个item。例如一个展示用户的列表每一个item都有用户名、描述、头像，如果头像的图片在xml里面添加了Android:contentDescription=”头像”，那么每一个item的头像都朗读为：”头像“，用户无法很好的区分当前是在哪一个人的头像。</p>
+</li>
+<li><h4>【问题代码】</h4>
+<hr/>
+<p>下面是ListView的item的布局文件，下面的代码中给ImageView添加了android:contentDescription属性。</p>
+<p>注：MainActivity.java代码和MainActivity布局文件请看"附件1"。</p>
+<textarea rows="35" cols="120">
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="horizontal"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:descendantFocusability="blocksDescendants">
+	<!-- 定义一个ImageView，用于作为列表项的一部分。 -->
+	<ImageView android:id="@+id/header"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" 
+		android:paddingLeft="10dp"
+		android:focusable="true"
+		android:focusableInTouchMode="true"
+		android:contentDescription="头像"/>
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+		<!-- 定义一个TextView，用于作为列表项的一部分。 -->
+		<TextView android:id="@+id/name"
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content"
+			android:textSize="20dp"
+			android:textColor="#f0f"
+			android:paddingLeft="10dp"
+			/>
+		<!-- 定义一个TextView，用于作为列表项的一部分。 -->
+		<TextView android:id="@+id/desc"
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content"
+			android:textSize="14dp"
+			android:paddingLeft="10dp"
+			/>
+	</LinearLayout>
+</LinearLayout>
+</textarea>
+<p>下面是继承与BaseAdapter的自定义的Adapter类：</p>
+<textarea rows="58" cols="120">
+import java.util.List;
+import java.util.Map;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MyAdapter extends BaseAdapter {
+
+	private LayoutInflater mInflater;// 动态布局映射
+	private List<Map<String, Object>> data;
+	private String[] keys;
+	private int[] ids;
+	private Context context;
+
+	public MyAdapter(Context context, List<Map<String, Object>> data, String[] keys, int[] ids) {
+		this.context = context;
+		this.mInflater = LayoutInflater.from(context);
+		this.data = data;
+		this.keys = keys;
+		this.ids = ids;
+		}
+
+	@Override
+	public int getCount() {
+		return data.size();
+	}
+
+	@Override
+	public Object getItem(int position) {
+		return data.get(position);
+	}
+
+	@Override
+	public long getItemId(int position) {
+		return position;
+	}
+
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent) {
+		convertView = mInflater.inflate(R.layout.list_item, null);//根据布局文件实例化view
+		TextView name = (TextView)convertView.findViewById(ids[0]);
+		name.setText(data.get(position).get(keys[0]).toString());		
+		TextView desc = (TextView) convertView.findViewById(ids[2]);
+		desc.setText(data.get(position).get(keys[2]).toString());
+		final  ImageView head = (ImageView) convertView.findViewById(ids[1]);
+ 		head.setImageResource((Integer) data.get(position).get(keys[1]));
+		head.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+			Toast.makeText(context, head.getContentDescription()+"被单机", Toast.LENGTH_SHORT).show();
+			}
+		});
+			return convertView;
+	}
+
+}
+</textarea>
+</li>
+<li><h4>【问题解决方案描述】</h4>
+<hr/>
+<p>在ListView绑定的Adapter中的getView()方法中获取到图形(ImageView)或其他要设置android:contentDescription属性的控件的实力用setContentDescription()方法设置此属性。设置的内容尽量与item相关，如展示用户头像的可以设置为用户名+“头像”。</p>
+</li>
+<li><h4>【解决方案】</h4>
+<hr/>
+<p>下面是ListView的item布局文件，下面的布局虽然设置了android:contentDescription属性，但是后面的Adapter会动态设置此属性把xml中设置的覆盖掉。</p>
+<textarea rows="35" cols="120">
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="horizontal"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:descendantFocusability="blocksDescendants">
+	<!-- 定义一个ImageView，用于作为列表项的一部分。 -->
+	<ImageView android:id="@+id/header"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" 
+		android:paddingLeft="10dp"
+		android:focusable="true"
+		android:focusableInTouchMode="true"
+		android:contentDescription="头像"/>
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+		<!-- 定义一个TextView，用于作为列表项的一部分。 -->
+		<TextView android:id="@+id/name"
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content"
+			android:textSize="20dp"
+			android:textColor="#f0f"
+			android:paddingLeft="10dp"
+			/>
+		<!-- 定义一个TextView，用于作为列表项的一部分。 -->
+		<TextView android:id="@+id/desc"
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content"
+			android:textSize="14dp"
+			android:paddingLeft="10dp"
+			/>
+	</LinearLayout>
+</LinearLayout>
+</textarea>
+<p>下面是继承与BaseAdapter的自定义Adapter，在此类中的getView()方法中动态的设置了android:contentDescription属性，设置的内容与人名关联，用户就能很好知道此图片是展示的什么;</p>
+<textarea rows="60" cols="120">
+import java.util.List;
+import java.util.Map;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MyAdapter extends BaseAdapter {
+
+	private LayoutInflater mInflater;// 动态布局映射
+	private List<Map<String, Object>> data;
+	private String[] keys;
+	private int[] ids;
+	private Context context;
+	public MyAdapter(Context context, List<Map<String, Object>> data, String[] keys, int[] ids) {
+		this.context = context;
+		this.mInflater = LayoutInflater.from(context);
+		this.data = data;
+		this.keys = keys;
+		ts.ids = ids;
+		}
+	@Override
+	public int getCount() {
+		return data.size();
+	}
+
+	@Override
+	public Object getItem(int position) {
+		return data.get(position);
+	}
+
+	@Override
+	public long getItemId(int position) {
+		return position;
+	}
+
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent) {
+		convertView = mInflater.inflate(R.layout.list_item, null);//根据布局文件实例化view
+		TextView name = (TextView)convertView.findViewById(ids[0]);
+		name.setText(data.get(position).get(keys[0]).toString());
+ 		TextView desc = (TextView) convertView.findViewById(ids[2]);
+ 		desc.setText(data.get(position).get(keys[2]).toString());
+		final  ImageView head = (ImageView) convertView.findViewById(ids[1]);
+		head.setImageResource((Integer) data.get(position).get(keys[1]));
+		head.setContentDescription(data.get(position).get(keys[0])+" 头像");
+
+		head.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Toast.makeText(context, head.getContentDescription()+"被单机", Toast.LENGTH_SHORT).show();
+			}
+		});
+			return convertView;
+	}
+
+}
+
+</textarea>
+</li>
+<li><h4>【前后效果图对比】</h4>
+<hr/>
+<table>
+<tr>
+<td><img src="15-1.png" class="litu" alt="优化前，屏幕阅读器朗读“头像按钮”"/></td><td><img src="15-2.png" class="litu" alt="优化后，屏幕阅读器朗读“弄玉 头像按钮”"/></td>
+</tr>
+<tr>
+<td>优化前，屏幕阅读器朗读“头像按钮”</td><td>优化后，屏幕阅读器朗读“弄玉 头像按钮”</td></tr>
+</table>
+</li>
+<li><h4>【扩展】</h4>
+<hr/>
+<a href="15fujian.html">附件1</a>
+<p></p>
+</li>
+<li><h4>【更多】</h4>
+<hr/>
+
+</li>
+</ol>
+</body>
+</html>

@@ -20,6 +20,7 @@ width:400px;
 }
 textarea{
 font-size:18px;
+cols:120;
 }
 p{
 font-size:20px;

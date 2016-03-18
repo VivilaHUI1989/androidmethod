@@ -1,0 +1,92 @@
+﻿<html>
+<head>
+<title>附件1</title>
+<link href="style.css" type="text/css" rel="Stylesheet"/>
+<style type="text/css">
+</style>
+</head>
+<body>
+<img src="yanjiuhuilogo.png" class="logo"/><br/>
+<a href="index.html">首页</a><a href="listviewimgcd.html"><p>返回</p></a>
+<h3>在Adapter的getView()方法中动态给ListView中的图片设置描述文本--附件1</h3>
+<hr/>
+<p> MainActivity.Xml</p>
+<textarea rows="11" cols="120">
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+	<ListView
+		android:id="@+id/myList"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"/>
+</LinearLayout>
+
+
+</textarea>
+<hr/>
+<p>MainActivity.java</p>
+
+<textarea rows="60" cols="120">
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.Toast;
+
+
+public class MainActivity extends Activity
+{
+	private ListView myList;
+	private String keys[] = new String[] { "personName", "header" , "desc"};
+	private int ids[] = new int[] { R.id.name, R.id.header , R.id.desc };
+	private List<Map<String, Object>> data;
+	@Override
+	public void onCreate(Bundle savedInstanceState)
+	{
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.main);
+
+		myList = (ListView) findViewById(R.id.myList);
+		data = getData();
+		MyAdapter adapter = new MyAdapter(this, data, keys, ids);
+		myList.setAdapter(adapter);
+		myList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+		@Override
+		public void onItemClick(AdapterView<?> arg0,View arg1, int arg2, long arg3) {
+			Toast.makeText(MainActivity.this, data.get(arg2).get(keys[0])+"被单机", Toast.LENGTH_SHORT).show();
+		}		
+		});
+	}
+	
+	private List<Map<String,Object>> getData() {
+		String[] names = new String[]
+			{ "虎头", "弄玉", "李清照", "李白"};
+		String[] descs = new String[]
+			{ "可爱的小孩", "一个擅长音乐的女孩", "一个擅长文学的女性", "浪漫主义诗人"};
+		int[] imageIds = new int[]
+			{ R.drawable.tiger , R.drawable.nongyu, R.drawable.qingzhao , R.drawable.libai};		
+		// 创建一个List集合，List集合的元素是Map
+		List<Map<String, Object>> listItems =
+				new ArrayList<Map<String, Object>>();
+		for (int i = 0; i < names.length; i++)
+		{
+			Map<String, Object> listItem = new HashMap<String, Object>();
+			listItem.put(keys[0], names[i]);
+			listItem.put(keys[1], imageIds[i]);
+			listItem.put(keys[2], descs[i]);
+			listItems.add(listItem);
+		}
+		return listItems;
+	}
+}
+</textarea>
+</body>
+</html>
